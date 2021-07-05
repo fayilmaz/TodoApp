@@ -1,14 +1,27 @@
-import store from "../../redux/store";
 import { TYPES } from "../../redux/TYPES";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import { getFormValue } from "../../redux/store";
 
 const AddButton = () => {
-  const formValue = useSelector((state) => state.formValue);
-  const handleAdd = () => {
+  const formValue = useSelector(getFormValue);
+  const dispatch = useDispatch();
+
+  const handleAdd = (e) => {
+    e.preventDefault();
     if (formValue !== "") {
-      store.dispatch({ type: TYPES.ADD, payload: formValue });
+      dispatch({
+        type: TYPES.ADD,
+        payload: { title: formValue, id: uuidv4() },
+      });
     }
+
+    dispatch({
+      type: TYPES.HANDLE_FORM,
+      payload: "",
+    });
   };
+
   return <button onClick={handleAdd}>Add</button>;
 };
 

@@ -1,4 +1,6 @@
 export const TYPES = {
   ADD: "ADD",
   HANDLE_FORM: "HANDLE_FORM",
+  HANDLE_COMPLETE: "HANDLE_COMPLETE",
+  REMOVE: "REMOVE",
 };
