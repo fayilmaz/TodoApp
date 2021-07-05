@@ -1,6 +1,10 @@
-export const TYPES = {
+export const TodoConstant = {
   ADD: "ADD",
+  ADD_SUCCESS: "ADD_SUCCESS",
+  ADD_FAIL: "ADD_FAIL",
+
   HANDLE_FORM: "HANDLE_FORM",
   HANDLE_COMPLETE: "HANDLE_COMPLETE",
+
   REMOVE: "REMOVE",
 };

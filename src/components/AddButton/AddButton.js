@@ -1,7 +1,8 @@
-import { TYPES } from "../../redux/TYPES";
+import { TodoConstant } from "../../store/constants/todo.constant";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { getFormValue } from "../../redux/store";
+import { getFormValue } from "../../store/selectors/todo.selector";
+import {todoActions} from "../../store/actions/todo.action";
 
 const AddButton = () => {
   const formValue = useSelector(getFormValue);
@@ -10,14 +11,12 @@ const AddButton = () => {
   const handleAdd = (e) => {
     e.preventDefault();
     if (formValue !== "") {
-      dispatch({
-        type: TYPES.ADD,
-        payload: { title: formValue, id: uuidv4() },
-      });
+      // eslint-disable-next-line no-undef
+      dispatch(todoActions.TodoAddAction({ title: formValue, id: uuidv4() }));
     }
 
     dispatch({
-      type: TYPES.HANDLE_FORM,
+      type: TodoConstant.HANDLE_FORM,
       payload: "",
     });
   };
